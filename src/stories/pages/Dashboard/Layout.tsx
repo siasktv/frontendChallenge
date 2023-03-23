@@ -1,19 +1,27 @@
-import React from "react";
-import { Stack } from "react-daisyui";
-import NavBar from "../../organisms/Navbar/Navbar";
-import PageFooter from "../../organisms/PageFooter/PageFooter";
+import { ReactNode } from "react";
 
-export interface LayoutProps {
-  loading: boolean;
-}
+// Material Dashboard 2 PRO React TS components
+import MDBox from "../../molecules/MDBox";
 
-const Layout: React.FC<LayoutProps> = ({ loading }: LayoutProps) => {
+function Layout({ children }: { children: ReactNode }): JSX.Element {
   return (
-    <Stack>
-      <NavBar />
-      <PageFooter />
-    </Stack>
+    <MDBox
+      sx={({ breakpoints, transitions, functions: { pxToRem } }) => ({
+        p: 3,
+        position: "relative",
+
+        [breakpoints.up("xl")]: {
+          marginLeft: pxToRem(0),
+          transition: transitions.create(["margin-left", "margin-right"], {
+            easing: transitions.easing.easeInOut,
+            duration: transitions.duration.standard,
+          }),
+        },
+      })}
+    >
+      {children}
+    </MDBox>
   );
-};
+}
 
 export default Layout;

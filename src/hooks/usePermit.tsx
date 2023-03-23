@@ -50,6 +50,13 @@ export const usePermit = () => {
         id: permit.id,
         projectId: permit.projectId,
         name: permit.name,
+        sector: permit.sector,
+        permitType: permit.permitType,
+        value: permit.value,
+        manager: permit.manager,
+        approver: permit.approver,
+        startDate: permit.startDate,
+        endDate: permit.endDate,
         status: "ACTIVE",
         created: new Date(),
       });

@@ -1,15 +1,14 @@
 import React from "react";
 import "./App.css";
+import { ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import HomeView from "./views/Pages/Home/HomeView";
 import SignUpView from "./views/Pages/Authenticate/SignUpView";
 import LoginView from "./views/Pages/Authenticate/LoginView";
 import DashboardView from "./views/Pages/Dashboard/DashboardView";
-import AnalyticsView from "./views/Pages/Dashboard/AnalyticsView";
-import ReportingView from "./views/Pages/Dashboard/ReportingView";
-import DirectoryView from "./views/Pages/Dashboard/DirectoryView";
 import { AuthProvider, useAuth } from "./hooks/useAuth";
 import ErrorBoundary from "./views/ErrorBoundary/ErrorBoundary";
+import theme from "./assets/theme";
 
 const AuthenticatedRouter = () => {
   const { loggedIn } = useAuth();
@@ -18,9 +17,6 @@ const AuthenticatedRouter = () => {
     return (
       <Routes>
         <Route path="/" element={<DashboardView />} />
-        <Route path="analytics" element={<AnalyticsView />} />
-        <Route path="reporting" element={<ReportingView />} />
-        <Route path="directory" element={<DirectoryView />} />
 
         <Route path="signup" element={<SignUpView />} />
         <Route path="login" element={<LoginView />} />
@@ -29,13 +25,9 @@ const AuthenticatedRouter = () => {
   }
   return (
     <Routes>
-      <Route path="/" element={<HomeView />} />
+      <Route path="/" element={<DashboardView />} />
       <Route path="signup" element={<SignUpView />} />
       <Route path="login" element={<LoginView />} />
-
-      <Route path="analytics" element={<AnalyticsView />} />
-      <Route path="reporting" element={<ReportingView />} />
-      <Route path="directory" element={<DirectoryView />} />
     </Routes>
   );
 };
@@ -44,9 +36,12 @@ function App() {
   return (
     <ErrorBoundary>
       <BrowserRouter>
-        <AuthProvider>
-          <AuthenticatedRouter />
-        </AuthProvider>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AuthProvider>
+            <AuthenticatedRouter />
+          </AuthProvider>
+        </ThemeProvider>
       </BrowserRouter>
     </ErrorBoundary>
   );
