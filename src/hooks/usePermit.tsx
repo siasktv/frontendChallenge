@@ -3,20 +3,16 @@ import { Permit } from "../interfaces/permit";
 import { db } from "../store/db";
 import { delay, MOCK_DELAY } from "../utils/delay";
 
-export const usePermit = (projectId: string, limit: number, offset: number) => {
+export const usePermit = () => {
   const [permits, setPermits] = React.useState<Permit[]>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
 
-  React.useEffect(() => {
-    listPermits(projectId, limit, offset);
-  }, [projectId, limit, offset]);
-
-  const getPermit = async (permit: Permit): Promise<Permit | undefined> => {
+  const getPermit = async (id: string): Promise<Permit | undefined> => {
     try {
       setIsLoading(true);
       delay(MOCK_DELAY);
-      return await db.permits.get(permit.id);
+      return await db.permits.get(id);
     } catch (e: any) {
       setError("Could not fetch permit");
     } finally {
@@ -54,6 +50,7 @@ export const usePermit = (projectId: string, limit: number, offset: number) => {
         id: permit.id,
         projectId: permit.projectId,
         name: permit.name,
+        status: "ACTIVE",
         created: new Date(),
       });
       setPermits([...permits, permit]);
@@ -70,6 +67,7 @@ export const usePermit = (projectId: string, limit: number, offset: number) => {
       delay(MOCK_DELAY);
       await db.permits.update(permit.id, {
         name: permit.name,
+        status: permit.status,
       });
       setPermits(
         permits.map((c) => {

@@ -8,15 +8,11 @@ export const useMail = (permitId: string, limit: number, offset: number) => {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
 
-  React.useEffect(() => {
-    listMails(permitId, limit, offset);
-  }, [permitId, limit, offset]);
-
-  const getMail = async (mail: Mail): Promise<Mail | undefined> => {
+  const getMail = async (id: string): Promise<Mail | undefined> => {
     try {
       setIsLoading(true);
       delay(MOCK_DELAY);
-      return await db.mail.get(mail.id);
+      return await db.mail.get(id);
     } catch (e: any) {
       setError("Could not fetch mail");
     } finally {
@@ -24,7 +20,7 @@ export const useMail = (permitId: string, limit: number, offset: number) => {
     }
   };
 
-  const listMails = async (
+  const listMail = async (
     permitId: string,
     limit: number,
     offset: number
@@ -83,7 +79,7 @@ export const useMail = (permitId: string, limit: number, offset: number) => {
   return {
     mails,
     getMail,
-    listMails,
+    listMail,
     createMail,
     deleteMail,
     isLoading,

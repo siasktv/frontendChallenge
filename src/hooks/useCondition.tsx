@@ -3,26 +3,16 @@ import { Condition } from "../interfaces/condition";
 import { db } from "../store/db";
 import { delay, MOCK_DELAY } from "../utils/delay";
 
-export const useCondition = (
-  permitId: string,
-  limit: number,
-  offset: number
-) => {
+export const useCondition = () => {
   const [conditions, setConditions] = React.useState<Condition[]>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
 
-  React.useEffect(() => {
-    listConditions(permitId, limit, offset);
-  }, [permitId, limit, offset]);
-
-  const getCondition = async (
-    condition: Condition
-  ): Promise<Condition | undefined> => {
+  const getCondition = async (id: string): Promise<Condition | undefined> => {
     try {
       setIsLoading(true);
       delay(MOCK_DELAY);
-      return await db.conditions.get(condition.id);
+      return await db.conditions.get(id);
     } catch (e: any) {
       setError("Could not fetch condition");
     } finally {
@@ -60,8 +50,14 @@ export const useCondition = (
         id: condition.id,
         permitId: condition.permitId,
         name: condition.name,
+        itemNumber: condition.itemNumber,
+        actionRequired: condition.actionRequired,
+        assigned: condition.assigned,
+        discipline: condition.discipline,
+        dueDate: condition.dueDate,
         status: condition.status,
-        created: new Date(),
+        collaborators: condition.collaborators,
+        created: condition.created,
       });
       setConditions([...conditions, condition]);
     } catch (e: any) {
@@ -77,6 +73,13 @@ export const useCondition = (
       delay(MOCK_DELAY);
       await db.conditions.update(condition.id, {
         name: condition.name,
+        itemNumber: condition.itemNumber,
+        actionRequired: condition.actionRequired,
+        assigned: condition.assigned,
+        discipline: condition.discipline,
+        dueDate: condition.dueDate,
+        status: condition.status,
+        collaborators: condition.collaborators,
       });
       setConditions(
         conditions.map((c) => {

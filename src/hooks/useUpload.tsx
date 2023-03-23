@@ -3,18 +3,10 @@ import { Upload } from "../interfaces/upload";
 import { db } from "../store/db";
 import { delay, MOCK_DELAY } from "../utils/delay";
 
-export const useUpload = (
-  conditionId: string,
-  limit: number,
-  offset: number
-) => {
+export const useUpload = () => {
   const [uploads, setUploads] = React.useState<Upload[]>([]);
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
   const [error, setError] = React.useState<string | null>(null);
-
-  React.useEffect(() => {
-    listUploads(conditionId, limit, offset);
-  }, [conditionId, limit, offset]);
 
   const listUploads = async (
     conditionId: string,

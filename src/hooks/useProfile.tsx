@@ -1,79 +1,129 @@
 import * as React from "react";
 import { Profile } from "../interfaces/profile";
-import { useLiveQuery } from "dexie-react-hooks";
 import { db } from "../store/db";
-import { IndexableType } from "dexie";
 import { delay, MOCK_DELAY } from "../utils/delay";
 
-type PC = {
-  loading: boolean;
-  profile?: Profile;
-  createProfile: (profile: Profile) => Promise<IndexableType>;
-  updateProfile: (profile: Profile) => Promise<IndexableType>;
-  deleteProfile: (profile: Profile) => Promise<void>;
+export const useProfile = () => {
+  const [profiles, setProfiles] = React.useState<Profile[]>([]);
+  const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<string | null>(null);
+
+  const getProfile = async (id: string): Promise<Profile | undefined> => {
+    try {
+      setIsLoading(true);
+      delay(MOCK_DELAY);
+      return await db.profiles.get(id);
+    } catch (e: any) {
+      setError("Could not fetch profile");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const listProfiles = async (
+    permitId: string,
+    limit: number,
+    offset: number
+  ): Promise<void> => {
+    try {
+      setIsLoading(true);
+      delay(MOCK_DELAY);
+      const profiles = await db.profiles
+        .where("permitId")
+        .equals(permitId)
+        .limit(limit)
+        .offset(offset)
+        .toArray();
+      setProfiles(profiles);
+    } catch (e: any) {
+      setError("Could not list profiles");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const createProfile = async (profile: Profile): Promise<void> => {
+    try {
+      setIsLoading(true);
+      delay(MOCK_DELAY);
+      await db.profiles.add({
+        id: profile.id,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        email: profile.email,
+        phone: profile.phone,
+        membershipType: profile.membershipType,
+        licenses: profile.licenses,
+        billingData: profile.billingData,
+        language: profile.language,
+        organisation: profile.organisation,
+        dob: profile.dob,
+        country: profile.country,
+        state: profile.state,
+        created: new Date(),
+      });
+      setProfiles([...profiles, profile]);
+    } catch (e: any) {
+      setError("Could not list profiles");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const updateProfile = async (profile: Profile): Promise<void> => {
+    try {
+      setIsLoading(true);
+      delay(MOCK_DELAY);
+      await db.profiles.update(profile.id, {
+        id: profile.id,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        phone: profile.phone,
+        membershipType: profile.membershipType,
+        licenses: profile.licenses,
+        billingData: profile.billingData,
+        language: profile.language,
+        organisation: profile.organisation,
+        dob: profile.dob,
+        country: profile.country,
+        state: profile.state,
+      });
+      setProfiles(
+        profiles.map((c) => {
+          if (c.id === profile.id) {
+            return profile;
+          }
+          return c;
+        })
+      );
+    } catch (e: any) {
+      setError("Could not update profile");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const deleteProfile = async (profile: Profile): Promise<void> => {
+    try {
+      setIsLoading(true);
+      delay(MOCK_DELAY);
+      await db.profiles.delete(profile.id);
+      setProfiles(profiles.filter((p) => p.id !== profile.id));
+    } catch (e: any) {
+      setError("Could not delete profile");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  return {
+    profiles,
+    getProfile,
+    listProfiles,
+    createProfile,
+    updateProfile,
+    deleteProfile,
+    isLoading,
+    error,
+  };
 };
-
-const createProfile = async (profile: Profile): Promise<IndexableType> => {
-  delay(MOCK_DELAY);
-  return await db.profiles.add({
-    id: profile.id,
-    firstName: profile.firstName,
-    lastName: profile.lastName,
-  });
-};
-
-const updateProfile = async (profile: Profile): Promise<IndexableType> => {
-  delay(MOCK_DELAY);
-  return await db.profiles.update(profile.id, {
-    firstName: profile.firstName,
-    lastName: profile.lastName,
-  });
-};
-
-const deleteProfile = async (profile: Profile): Promise<void> => {
-  delay(MOCK_DELAY);
-  await db.profiles.delete(profile.id);
-};
-
-export const ProfileContext = React.createContext<PC>({
-  loading: true,
-  profile: undefined,
-  createProfile,
-  updateProfile,
-  deleteProfile,
-});
-
-type ProfileProviderProps = {
-  id: number;
-  children: React.ReactNode;
-};
-
-const ProfileProvider = (props: ProfileProviderProps) => {
-  const [loading, setLoading] = React.useState(true);
-  const profile = useLiveQuery(async () => {
-    delay(MOCK_DELAY);
-    return await db.profiles.get(props.id);
-  }, [props.id]);
-
-  if (profile) {
-    setLoading(false);
-  }
-
-  return (
-    <ProfileContext.Provider
-      value={{
-        loading,
-        profile,
-        createProfile,
-        updateProfile,
-        deleteProfile,
-      }}
-    >
-      {props.children}
-    </ProfileContext.Provider>
-  );
-};
-
-const useProfile = () => React.useContext(ProfileContext);
-
-export { ProfileProvider, useProfile };

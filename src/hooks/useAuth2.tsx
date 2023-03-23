@@ -43,6 +43,7 @@ const AuthProvider = (props: AuthProviderProps) => {
     await db.users.add({
       id: new Date().getTime().toString(),
       email: email,
+      created: new Date(),
     });
     localStorage.setItem("isAuthenticated", "true");
     return true;
