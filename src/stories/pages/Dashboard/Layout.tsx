@@ -1,27 +1,28 @@
+import Container from "@mui/material/Container";
 import { ReactNode } from "react";
+import { ProjectSelect } from "../../molecules/ProjectSelect/ProjectSelect";
+import { DashboardNavBar } from "../../organisms/AppBars/DashboardNavBar";
+import { Footer } from "../../organisms/Footers/Footer";
 
-// Material Dashboard 2 PRO React TS components
-import MDBox from "../../molecules/MDBox";
-
-function Layout({ children }: { children: ReactNode }): JSX.Element {
-  return (
-    <MDBox
-      sx={({ breakpoints, transitions, functions: { pxToRem } }) => ({
-        p: 3,
-        position: "relative",
-
-        [breakpoints.up("xl")]: {
-          marginLeft: pxToRem(0),
-          transition: transitions.create(["margin-left", "margin-right"], {
-            easing: transitions.easing.easeInOut,
-            duration: transitions.duration.standard,
-          }),
-        },
-      })}
-    >
-      {children}
-    </MDBox>
-  );
+interface LayoutProps {
+  children: ReactNode;
+  showProjectSelect?: boolean;
 }
 
-export default Layout;
+export const Layout = ({
+  showProjectSelect = true,
+  children,
+}: LayoutProps): JSX.Element => {
+  return (
+    <>
+      <DashboardNavBar />
+      {showProjectSelect ? (
+        <Container sx={{ mt: 12 }}>
+          <ProjectSelect />
+        </Container>
+      ) : null}
+      {children}
+      <Footer />
+    </>
+  );
+};

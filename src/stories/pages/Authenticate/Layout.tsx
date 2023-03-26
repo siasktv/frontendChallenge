@@ -1,11 +1,18 @@
-import React from "react";
+import Container from "@mui/material/Container";
+import { ReactNode } from "react";
+import { ProjectSelect } from "../../molecules/ProjectSelect/ProjectSelect";
+import { DashboardNavBar } from "../../organisms/AppBars/DashboardNavBar";
+import { Footer } from "../../organisms/Footers/Footer";
 
-export interface LayoutProps {
-  loading: boolean;
-}
-
-const Layout: React.FC<LayoutProps> = ({ loading }: LayoutProps) => {
-  return <div className="">{loading}</div>;
+export const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
+  return (
+    <>
+      <DashboardNavBar />
+      <Container sx={{ mt: 4 }} maxWidth="lg">
+        <ProjectSelect />
+      </Container>
+      {children}
+      <Footer />
+    </>
+  );
 };
-
-export default Layout;

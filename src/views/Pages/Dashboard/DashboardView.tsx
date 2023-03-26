@@ -1,5 +1,5 @@
 import React from "react";
-import Dashboard from "../../../stories/pages/Dashboard/Dashboard";
+import { Dashboard } from "../../../stories/pages/Dashboard/Dashboard";
 
 export interface DirectoryViewProps {}
 
