@@ -12,7 +12,7 @@ export const Layout = (props: LayoutProps): JSX.Element => {
     <>
       <DashboardNavBar />
       {children}
-      <Footer />
+      <Footer sx={{ mt: 8, mb: 4 }} />
     </>
   );
 };

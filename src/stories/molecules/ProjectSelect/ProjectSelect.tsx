@@ -1,40 +1,29 @@
+import PostAdd from "@mui/icons-material/PostAdd";
+import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
-import { useFormik } from "formik";
-import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 export const ProjectSelect = () => {
+  const navigate = useNavigate();
   const projects = ["Project 1", "Project 2", "Project 3", "Project 4"];
 
-  const validationSchema = yup.object({
-    currentProject: yup.string().required("Project is required"),
-  });
-  const formik = useFormik({
-    initialValues: {
-      currentProject: "Project 1",
-    },
-    validationSchema: validationSchema,
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
-
+  const handleChange = () => {};
+  const createProject = () => {
+    navigate("/create-project");
+  };
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <FormControl fullWidth>
+    <>
+      <FormControl>
         <InputLabel id="current-project">Current Project</InputLabel>
         <Select
           labelId="current-project"
           id="currentProject"
           name="currentProject"
-          value={formik.values.currentProject}
-          onChange={formik.handleChange}
-          error={
-            formik.touched.currentProject &&
-            Boolean(formik.errors.currentProject)
-          }
+          value={"Project 1"}
+          onChange={handleChange}
           label="Current Project"
         >
           {projects.map((p, index) => (
@@ -44,6 +33,14 @@ export const ProjectSelect = () => {
           ))}
         </Select>
       </FormControl>
-    </form>
+      <Button
+        variant="contained"
+        onClick={createProject}
+        style={{ textTransform: "none" }}
+        endIcon={<PostAdd />}
+      >
+        New Permit
+      </Button>
+    </>
   );
 };

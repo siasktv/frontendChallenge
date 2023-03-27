@@ -7,7 +7,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { ReactNode } from "react";
 import { DashboardNavBar } from "../../organisms/AppBars/DashboardNavBar";
-import { Footer } from "../../organisms/Footers/Footer";
+import { Footer } from "../../organisms/Footer/Footer";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import Language from "@mui/icons-material/Language";
 import FolderSharedIcon from "@mui/icons-material/FolderShared";

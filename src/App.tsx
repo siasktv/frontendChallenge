@@ -21,6 +21,7 @@ import CreatePermitView from "./views/Pages/Permit/CreatePermitView";
 import CreateConditionsView from "./views/Pages/Dashboard/CreateConditionsView";
 import ConditionView from "./views/Pages/Dashboard/ConditionView";
 import ListConditionsView from "./views/Pages/Dashboard/ListConditionsView";
+import CreateProjectView from "./views/Pages/Project/CreateProjectView";
 
 const AuthenticatedRouter = () => {
   const { loggedIn } = useAuth();
@@ -45,6 +46,7 @@ const AuthenticatedRouter = () => {
       <Route path="/mail" element={<MailView />} />
       <Route path="/profile" element={<ProfileView />} />
       <Route path="/create-permit" element={<CreatePermitView />} />
+      <Route path="/create-project" element={<CreateProjectView />} />
       <Route path="signup" element={<SignUpView />} />
       <Route path="login" element={<LoginView />} />
     </Routes>

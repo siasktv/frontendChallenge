@@ -8,7 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 
 import { ReactNode } from "react";
 import { DashboardNavBar } from "../../organisms/AppBars/DashboardNavBar";
-import { Footer } from "../../organisms/Footers/Footer";
+import { Footer } from "../../organisms/Footer/Footer";
 import FolderCopy from "@mui/icons-material/FolderCopy";
 import InfoIcon from "@mui/icons-material/Info";
 import AttachEmail from "@mui/icons-material/AttachEmail";

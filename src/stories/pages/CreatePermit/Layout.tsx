@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { DashboardNavBar } from "../../organisms/AppBars/DashboardNavBar";
-import { Footer } from "../../organisms/Footers/Footer";
+import { Footer } from "../../organisms/Footer/Footer";
 
 interface LayoutProps {
   children: ReactNode;

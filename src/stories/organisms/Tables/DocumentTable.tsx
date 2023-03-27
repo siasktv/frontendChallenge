@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
 import CloudDownloadIcon from "@mui/icons-material/CloudDownload";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 
 const rows: GridRowsProp = [
   {
@@ -44,20 +45,40 @@ const columns: GridColDef[] = [
   { field: "col9", headerName: "Revision Date", ...baseBehaviour },
   { field: "col10", headerName: "File Size", ...baseBehaviour },
 ];
-export const DocumentTable = () => {
-  const downloadDocuments = () => {};
 
+interface DocumentTableProps {
+  allowDownload?: boolean;
+  allowUpload?: boolean;
+}
+export const DocumentTable = ({
+  allowDownload,
+  allowUpload,
+}: DocumentTableProps) => {
+  const downloadDocuments = () => {};
+  const addDocument = () => {};
   return (
-    <Container sx={{ mt: 4, mb: 2 }}>
+    <Container sx={{ mb: 2 }} maxWidth="lg">
       <Box display="flex" justifyContent="flex-end" alignItems="flex-end">
-        <Button
-          variant="contained"
-          onClick={downloadDocuments}
-          endIcon={<CloudDownloadIcon />}
-          style={{ textTransform: "none" }}
-        >
-          Download Documents
-        </Button>
+        {allowDownload ? (
+          <Button
+            variant="contained"
+            onClick={downloadDocuments}
+            endIcon={<CloudDownloadIcon />}
+            style={{ textTransform: "none" }}
+          >
+            Download Documents
+          </Button>
+        ) : null}
+        {allowUpload ? (
+          <Button
+            variant="contained"
+            onClick={addDocument}
+            endIcon={<CloudUploadIcon />}
+            style={{ textTransform: "none" }}
+          >
+            Add Document
+          </Button>
+        ) : null}
       </Box>
       <DataGrid
         style={{ height: 350, marginTop: "10px" }}
