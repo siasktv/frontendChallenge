@@ -39,7 +39,7 @@ export const ProjectSelect = () => {
         style={{ textTransform: "none" }}
         endIcon={<PostAdd />}
       >
-        New Permit
+        New Project
       </Button>
     </>
   );

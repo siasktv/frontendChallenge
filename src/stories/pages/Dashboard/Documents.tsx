@@ -13,7 +13,7 @@ export const Documents = (): JSX.Element => {
             Documents
           </Typography>
         </Container>
-        <DocumentTable />
+        <DocumentTable allowDownload={true} />
       </Stack>
     </Layout>
   );

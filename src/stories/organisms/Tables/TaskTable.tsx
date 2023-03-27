@@ -1,5 +1,9 @@
+import { PostAdd } from "@mui/icons-material";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+import { useNavigate } from "react-router-dom";
 
 const rows: GridRowsProp = [
   {
@@ -39,10 +43,15 @@ const columns: GridColDef[] = [
   { field: "col7", headerName: "Due Date", ...baseBehaviour },
 ];
 export const TaskTable = () => {
+  const navigate = useNavigate();
+  const handleRowclick = () => {
+    navigate("/condition");
+  };
   return (
-    <Container sx={{ mt: 4, mb: 2 }}>
+    <Container sx={{ mb: 2 }} maxWidth="lg">
       <DataGrid
-        style={{ height: 350 }}
+        onRowClick={handleRowclick}
+        style={{ height: 350, marginTop: "10px" }}
         rows={rows}
         columns={columns}
         disableColumnFilter
