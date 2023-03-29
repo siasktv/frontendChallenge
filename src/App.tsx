@@ -13,6 +13,9 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { HomeView } from "./views/Pages/Home/HomeView";
 import { Route, Routes } from "react-router-dom";
 import { DashboardView } from "./views/Pages/Dashboard/DashboardView";
+import { PricingView } from "./views/Pages/Home/PricingView";
+import { LoginView } from "./views/Pages/Authenticate/LoginView";
+import { SignUpView } from "./views/Pages/Authenticate/SignUpView";
 
 const AuthenticatedRouter = () => {
   const { loggedIn } = useAuth();
@@ -27,7 +30,10 @@ const AuthenticatedRouter = () => {
   return (
     <Routes>
       <Route index path="/" element={<HomeView />} />
+      <Route path="/pricing" element={<PricingView />} />
       <Route path="/dashboard" element={<DashboardView />} />
+      <Route path="/login" element={<LoginView />} />
+      <Route path="/sign-up" element={<SignUpView />} />
     </Routes>
   );
 };
