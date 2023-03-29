@@ -1,7 +1,6 @@
-import { ReactNode } from "react";
-import { ProSidebarProvider } from "react-pro-sidebar";
-import { SidebarMenu } from "../../global/SidebarMenu";
-import { TopBar } from "../../global/Topbar";
+import { ReactNode, useState } from "react";
+import { SidebarMenu } from "../../molecules/SidebarMenu/SidebarMenu";
+import { TopBar } from "../../molecules/Topbar/Topbar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,15 +8,17 @@ interface LayoutProps {
 
 export const Layout = (props: LayoutProps) => {
   const { children } = props;
+  const [isOpen, setIsOpen] = useState(false);
+  const handleDrawerOpen = () => {
+    setIsOpen(!isOpen);
+  };
   return (
-    <ProSidebarProvider>
-      <div className="app">
-        <SidebarMenu />
-        <main className="content">
-          <TopBar />
-          {children}
-        </main>
-      </div>
-    </ProSidebarProvider>
+    <div className="app">
+      <SidebarMenu open={isOpen} handleDrawerOpen={handleDrawerOpen} />
+      <main className="content">
+        <TopBar open={isOpen} handleDrawerOpen={handleDrawerOpen} />
+        {children}
+      </main>
+    </div>
   );
 };

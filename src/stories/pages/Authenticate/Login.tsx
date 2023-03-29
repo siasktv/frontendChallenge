@@ -12,10 +12,12 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme } from "@mui/material/styles";
 import { Layout } from "./Layout";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 export const Login = () => {
+  const navigate = useNavigate();
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -23,6 +25,7 @@ export const Login = () => {
       email: data.get("email"),
       password: data.get("password"),
     });
+    navigate("/dashboard");
   };
 
   return (

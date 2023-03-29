@@ -50,7 +50,7 @@ function Copyright(props: any) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Social Pro
+        Your Website
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}

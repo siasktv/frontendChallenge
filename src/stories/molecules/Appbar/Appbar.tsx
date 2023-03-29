@@ -34,7 +34,7 @@ export const Appbar = () => {
           sx={{ flexGrow: 1 }}
           onClick={handleHome}
         >
-          Social Pro
+          <img src="logo_alt.png" alt="Social Pro" height="50px" />
         </Typography>
         <nav>
           <Link

@@ -1,6 +1,5 @@
 import React from "react";
 import { Grid, Typography, Button, Box } from "@mui/material";
-import myteam from "../../../images/myteam.jpg";
 import homeStyles from "../../../theme/homeStyles";
 
 const Hero = () => {
@@ -21,11 +20,11 @@ const Hero = () => {
             color="primary"
             sx={{ width: "200px", fontSize: "16px" }}
           >
-            HIRE US
+            Contact Us
           </Button>
         </Grid>
         <Grid item xs={12} md={5}>
-          <img src={myteam} alt="My Team" style={homeStyles.largeImage} />
+          <img src={"hero.png"} alt="My Team" style={homeStyles.largeImage} />
         </Grid>
       </Grid>
     </Box>
