@@ -12,18 +12,27 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme } from "@mui/material/styles";
 import { Layout } from "./Layout";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 export const SignUp = () => {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-  };
+  const navigate = useNavigate();
+  const validationSchema = yup.object({
+    email: yup.string().required("Email is required"),
+  });
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+      navigate("/dashboard");
+    },
+  });
 
   return (
     <Layout>
@@ -45,31 +54,10 @@ export const SignUp = () => {
           <Box
             component="form"
             noValidate
-            onSubmit={handleSubmit}
+            onSubmit={formik.handleSubmit}
             sx={{ mt: 3 }}
           >
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="First Name"
-                  autoFocus
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                />
-              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required

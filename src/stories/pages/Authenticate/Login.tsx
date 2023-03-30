@@ -13,20 +13,27 @@ import Container from "@mui/material/Container";
 import { createTheme } from "@mui/material/styles";
 import { Layout } from "./Layout";
 import { useNavigate } from "react-router-dom";
+import { useFormik } from "formik";
+import * as yup from "yup";
 
 const theme = createTheme();
 
 export const Login = () => {
   const navigate = useNavigate();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
-    navigate("/dashboard");
-  };
+
+  const validationSchema = yup.object({
+    email: yup.string().required("Email is required"),
+  });
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      alert(JSON.stringify(values, null, 2));
+      navigate("/dashboard");
+    },
+  });
 
   return (
     <Layout>
@@ -47,7 +54,7 @@ export const Login = () => {
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={formik.handleSubmit}
             noValidate
             sx={{ mt: 1 }}
           >
@@ -60,6 +67,9 @@ export const Login = () => {
               name="email"
               autoComplete="email"
               autoFocus
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              error={formik.touched.email && Boolean(formik.errors.email)}
             />
 
             <FormControlLabel
