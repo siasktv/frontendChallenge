@@ -21,7 +21,7 @@ const theme = createTheme();
 export const SignUp = () => {
   const navigate = useNavigate();
   const validationSchema = yup.object({
-    email: yup.string().required("Email is required"),
+    email: yup.string().email().required("Email is required"),
   });
   const formik = useFormik({
     initialValues: {

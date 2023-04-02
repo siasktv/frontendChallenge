@@ -8,12 +8,17 @@ const Hero = () => {
       <Grid container spacing={6} sx={homeStyles.gridContainer}>
         <Grid item xs={12} md={7}>
           <Typography variant="h3" fontWeight={700} sx={homeStyles.title}>
-            Let's scale your business
+            Procurement that makes a difference
           </Typography>
           <Typography variant="h6" sx={homeStyles.subtitle}>
-            Hire professionals who will help your business make 10X your
-            previous income. With over 5years experience in Marketing & Business
-            strategy, we are your best client.
+            Welcome to Social Pro, your destination for socially responsible
+            procurement. We've created a platform that enables you to make
+            informed decisions about your procurement practices and prioritize
+            social values alongside traditional criteria. Whether you're looking
+            to support local businesses, promote ethical practices, or create
+            employment opportunities for underrepresented groups, Social Pro has
+            got you covered. Join us in building a more inclusive, sustainable,
+            and equitable world through procurement.
           </Typography>
           <Button
             variant="contained"

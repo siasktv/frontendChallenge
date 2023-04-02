@@ -1,4 +1,5 @@
 import {
+  Collapse,
   Divider,
   IconButton,
   List,
@@ -21,6 +22,21 @@ import MuiDrawer from "@mui/material/Drawer";
 
 import ListItemText from "@mui/material/ListItemText";
 import MailIcon from "@mui/icons-material/Mail";
+import { useState } from "react";
+import {
+  Assessment,
+  Business,
+  Engineering,
+  ExpandLess,
+  ExpandMore,
+  FolderShared,
+  Home,
+  Insights,
+  PeopleAlt,
+  SocialDistance,
+} from "@mui/icons-material";
+import { ContractorMenu } from "../ContractorMenu/ContractorMenu";
+import { SubContractorMenu } from "../SubContractorMenu/SubContractorMenu";
 
 const drawerWidth = 240;
 
@@ -76,12 +92,8 @@ interface SideBarProps {
 }
 
 export const SidebarMenu = ({ open, handleDrawerOpen }: SideBarProps) => {
-  const navigate = useNavigate();
   const theme = useTheme();
 
-  const handleMenuButtonClick = (path: string) => {
-    navigate(path);
-  };
   return (
     <Drawer variant="permanent" open={open}>
       <DrawerHeader>
@@ -94,140 +106,9 @@ export const SidebarMenu = ({ open, handleDrawerOpen }: SideBarProps) => {
         </IconButton>
       </DrawerHeader>
       <Divider />
-      <List>
-        <ListItem key={"Summary"} disablePadding sx={{ display: "block" }}>
-          <ListItemButton
-            onClick={() => handleMenuButtonClick("/dashboard")}
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <BarChartOutlinedIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Summary"} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem key={"Permits"} disablePadding sx={{ display: "block" }}>
-          <ListItemButton
-            onClick={() => handleMenuButtonClick("/permits")}
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <Summarize />
-            </ListItemIcon>
-            <ListItemText primary={"Permits"} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem key={"Tasks"} disablePadding sx={{ display: "block" }}>
-          <ListItemButton
-            onClick={() => handleMenuButtonClick("/tasks")}
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <AccessTime />
-            </ListItemIcon>
-            <ListItemText primary={"Tasks"} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem key={"Mail"} disablePadding sx={{ display: "block" }}>
-          <ListItemButton
-            onClick={() => handleMenuButtonClick("/mail")}
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <MailIcon />
-            </ListItemIcon>
-            <ListItemText primary={"Mail"} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem key={"Documents"} disablePadding sx={{ display: "block" }}>
-          <ListItemButton
-            onClick={() => handleMenuButtonClick("/documents")}
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <FolderCopy />
-            </ListItemIcon>
-            <ListItemText
-              primary={"Documents"}
-              sx={{ opacity: open ? 1 : 0 }}
-            />
-          </ListItemButton>
-        </ListItem>
-        <ListItem key={"Directory"} disablePadding sx={{ display: "block" }}>
-          <ListItemButton
-            onClick={() => handleMenuButtonClick("/directory")}
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? "initial" : "center",
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : "auto",
-                justifyContent: "center",
-              }}
-            >
-              <BusinessCenterOutlined />
-            </ListItemIcon>
-            <ListItemText
-              primary={"Directory"}
-              sx={{ opacity: open ? 1 : 0 }}
-            />
-          </ListItemButton>
-        </ListItem>
-      </List>
+      <ContractorMenu open={open} />
+      <Divider />
+      <SubContractorMenu open={open} />
     </Drawer>
   );
 };
