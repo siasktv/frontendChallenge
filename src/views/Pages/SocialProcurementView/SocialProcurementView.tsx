@@ -1,5 +1,5 @@
-import { Dashboard } from "../../../stories/pages/Dashboard/Dashboard";
+import { SocialProcurement } from "../../../stories/pages/SocialProcurement/SocialProcurement";
 
 export const SocialProcurementView = () => {
-  return <Dashboard />;
+  return <SocialProcurement />;
 };

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { CreateProjectForm } from "../../molecules/CreateProjectForm/CreateProjectForm";
 import { CreateProjectSteps } from "../../molecules/CreateProjectSteps/CreateProjectSteps";
 import { CreateSocialProcurementForm } from "../../molecules/CreateSocialProcurementForm/CreateSocialProcurementForm";
-import { Layout } from "./Layout";
 
 export const CreateProject = () => {
   const [activeStep, setActiveStep] = useState(1);
@@ -17,9 +16,9 @@ export const CreateProject = () => {
     }
   })();
   return (
-    <Layout>
+    <>
       <CreateProjectSteps activeStep={activeStep} />
       {selectedCreateProjectStep}
-    </Layout>
+    </>
   );
 };

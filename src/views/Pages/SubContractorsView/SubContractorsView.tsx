@@ -1,5 +1,5 @@
-import { Dashboard } from "../../../stories/pages/Dashboard/Dashboard";
+import { SubContractors } from "../../../stories/pages/SubContractors/SubContractors";
 
 export const SubContractorsView = () => {
-  return <Dashboard />;
+  return <SubContractors />;
 };

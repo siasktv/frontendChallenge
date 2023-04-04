@@ -1,14 +1,10 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import Container from "@mui/material/Container";
-import { useNavigate } from "react-router-dom";
-import { Appbar } from "../../molecules/Appbar/Appbar";
+import { Appbar } from "../molecules/Appbar/Appbar";
 
 const footers = [
   {
@@ -62,7 +58,7 @@ interface LayoutProps {
   children: React.ReactNode;
 }
 
-export const Layout = (props: LayoutProps) => {
+export const BasicLayout = (props: LayoutProps) => {
   const { children } = props;
   return (
     <>

@@ -1,5 +1,5 @@
-import { Dashboard } from "../../../stories/pages/Dashboard/Dashboard";
+import { LabourHours } from "../../../stories/pages/LabourHours/LabourHours";
 
 export const LabourHoursView = () => {
-  return <Dashboard />;
+  return <LabourHours />;
 };

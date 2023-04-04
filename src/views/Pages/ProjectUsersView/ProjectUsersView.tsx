@@ -1,5 +1,5 @@
-import { Dashboard } from "../../../stories/pages/Dashboard/Dashboard";
+import { ProjectUsers } from "../../../stories/pages/ProjectUsers/ProjectUsers";
 
 export const ProjectUsersView = () => {
-  return <Dashboard />;
+  return <ProjectUsers />;
 };

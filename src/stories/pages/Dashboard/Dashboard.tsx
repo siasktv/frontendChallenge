@@ -1,9 +1,5 @@
-import { Layout } from "./Layout";
+import { Box } from "@mui/material";
 
 export const Dashboard = () => {
-  return (
-    <Layout>
-      <>Dashboard</>
-    </Layout>
-  );
+  return <Box mt={10}>Dashboard</Box>;
 };

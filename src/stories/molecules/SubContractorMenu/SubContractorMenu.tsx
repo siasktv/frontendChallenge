@@ -48,7 +48,7 @@ export const SubContractorMenu = ({ open }: SideBarProps) => {
     <List>
       <ListItem key={"Home"} disablePadding sx={{ display: "block" }}>
         <ListItemButton
-          onClick={() => handleMenuButtonClick("/dashboard")}
+          onClick={() => handleMenuButtonClick("/s/dashboard")}
           sx={{
             minHeight: 48,
             justifyContent: open ? "initial" : "center",
@@ -69,7 +69,7 @@ export const SubContractorMenu = ({ open }: SideBarProps) => {
       </ListItem>
       <ListItem key={"Targets"} disablePadding sx={{ display: "block" }}>
         <ListItemButton
-          onClick={() => handleMenuButtonClick("/permits")}
+          onClick={() => handleMenuButtonClick("/s/portal")}
           sx={{
             minHeight: 48,
             justifyContent: open ? "initial" : "center",
@@ -90,7 +90,7 @@ export const SubContractorMenu = ({ open }: SideBarProps) => {
       </ListItem>
       <ListItem key={"Analytics"} disablePadding sx={{ display: "block" }}>
         <ListItemButton
-          onClick={() => handleMenuButtonClick("/tasks")}
+          onClick={() => handleMenuButtonClick("/s/analytics")}
           sx={{
             minHeight: 48,
             justifyContent: open ? "initial" : "center",
@@ -119,7 +119,7 @@ export const SubContractorMenu = ({ open }: SideBarProps) => {
       <Collapse in={reportingOpen} timeout="auto" unmountOnExit>
         <ListItem key={"Labour Hours"} disablePadding sx={{ display: "block" }}>
           <ListItemButton
-            onClick={() => handleMenuButtonClick("/mail")}
+            onClick={() => handleMenuButtonClick("/s/labour-hours")}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",
@@ -147,7 +147,7 @@ export const SubContractorMenu = ({ open }: SideBarProps) => {
           sx={{ display: "block" }}
         >
           <ListItemButton
-            onClick={() => handleMenuButtonClick("/documents")}
+            onClick={() => handleMenuButtonClick("/s/social-procurement")}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",
@@ -180,7 +180,7 @@ export const SubContractorMenu = ({ open }: SideBarProps) => {
       <Collapse in={directoryOpen} timeout="auto" unmountOnExit>
         <ListItem key={"Employees"} disablePadding sx={{ display: "block" }}>
           <ListItemButton
-            // onClick={() => handleMenuButtonClick("/directory")}
+            onClick={() => handleMenuButtonClick("/s/employees")}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",
@@ -205,7 +205,7 @@ export const SubContractorMenu = ({ open }: SideBarProps) => {
 
         <ListItem key={"Companies"} disablePadding sx={{ display: "block" }}>
           <ListItemButton
-            // onClick={() => handleMenuButtonClick("/directory")}
+            onClick={() => handleMenuButtonClick("/s/companies")}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",

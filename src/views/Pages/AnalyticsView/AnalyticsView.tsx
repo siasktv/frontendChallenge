@@ -1,5 +1,5 @@
-import { Dashboard } from "../../../stories/pages/Dashboard/Dashboard";
+import { Analytics } from "../../../stories/pages/Analytics/Analytics";
 
 export const AnalyticsView = () => {
-  return <Dashboard />;
+  return <Analytics />;
 };

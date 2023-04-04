@@ -33,6 +33,7 @@ export const ContractorMenu = ({ open }: SideBarProps) => {
   const navigate = useNavigate();
 
   const handleMenuButtonClick = (path: string) => {
+    debugger;
     navigate(path);
   };
 
@@ -49,7 +50,7 @@ export const ContractorMenu = ({ open }: SideBarProps) => {
     <List>
       <ListItem key={"Home"} disablePadding sx={{ display: "block" }}>
         <ListItemButton
-          onClick={() => handleMenuButtonClick("/dashboard")}
+          onClick={() => handleMenuButtonClick("/c/dashboard")}
           sx={{
             minHeight: 48,
             justifyContent: open ? "initial" : "center",
@@ -70,7 +71,7 @@ export const ContractorMenu = ({ open }: SideBarProps) => {
       </ListItem>
       <ListItem key={"Subcontractors"} disablePadding sx={{ display: "block" }}>
         <ListItemButton
-          onClick={() => handleMenuButtonClick("/subcontractors")}
+          onClick={() => handleMenuButtonClick("/c/subcontractors")}
           sx={{
             minHeight: 48,
             justifyContent: open ? "initial" : "center",
@@ -94,7 +95,7 @@ export const ContractorMenu = ({ open }: SideBarProps) => {
       </ListItem>
       <ListItem key={"Analytics"} disablePadding sx={{ display: "block" }}>
         <ListItemButton
-          onClick={() => handleMenuButtonClick("/analytics")}
+          onClick={() => handleMenuButtonClick("/c/analytics")}
           sx={{
             minHeight: 48,
             justifyContent: open ? "initial" : "center",
@@ -123,7 +124,7 @@ export const ContractorMenu = ({ open }: SideBarProps) => {
       <Collapse in={reportingOpen} timeout="auto" unmountOnExit>
         <ListItem key={"Labour Hours"} disablePadding sx={{ display: "block" }}>
           <ListItemButton
-            onClick={() => handleMenuButtonClick("/labour-hours")}
+            onClick={() => handleMenuButtonClick("/c/labour-hours")}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",
@@ -151,7 +152,7 @@ export const ContractorMenu = ({ open }: SideBarProps) => {
           sx={{ display: "block" }}
         >
           <ListItemButton
-            onClick={() => handleMenuButtonClick("/social-procurement")}
+            onClick={() => handleMenuButtonClick("/c/social-procurement")}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",
@@ -188,7 +189,7 @@ export const ContractorMenu = ({ open }: SideBarProps) => {
           sx={{ display: "block" }}
         >
           <ListItemButton
-            onClick={() => handleMenuButtonClick("/project-users")}
+            onClick={() => handleMenuButtonClick("/c/project-users")}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",
@@ -213,7 +214,7 @@ export const ContractorMenu = ({ open }: SideBarProps) => {
 
         <ListItem key={"Companies"} disablePadding sx={{ display: "block" }}>
           <ListItemButton
-            onClick={() => handleMenuButtonClick("/companies")}
+            onClick={() => handleMenuButtonClick("/c/companies")}
             sx={{
               minHeight: 48,
               justifyContent: open ? "initial" : "center",

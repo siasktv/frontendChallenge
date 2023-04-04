@@ -87,7 +87,7 @@ export const TopBar = ({ open, handleDrawerOpen }: TopBarProps) => {
             <MenuIcon />
           </IconButton>
           <img
-            src="logo.png"
+            src="../logo.png"
             height="50px"
             alt="logo"
             style={{ marginTop: "1vh" }}
