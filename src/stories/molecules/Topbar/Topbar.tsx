@@ -16,7 +16,6 @@ import Badge from "@mui/material/Badge";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ProjectSelect } from "../ProjectSelect/ProjectSelect";
 const drawerWidth = 240;
 
 interface AppBarProps extends MuiAppBarProps {
@@ -93,9 +92,7 @@ export const TopBar = ({ open, handleDrawerOpen }: TopBarProps) => {
             style={{ marginTop: "1vh" }}
           />
         </Box>
-        <Box sx={{ flexGrow: 1 }}>
-          <ProjectSelect />
-        </Box>
+        <Box sx={{ flexGrow: 1 }}></Box>
         <Box>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
