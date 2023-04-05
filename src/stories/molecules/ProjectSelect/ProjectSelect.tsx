@@ -9,21 +9,15 @@ import {
   Select,
   SelectChangeEvent,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 
 interface ProjectSelectProps {}
 
 export const ProjectSelect = () => {
-  const navigate = useNavigate();
   const projects = ["Project 1", "Project 2", "Project 3", "Project 4"];
 
   const [selectedProject, setSelectedProject] = useState(projects[0]);
   const handleChange = (event: SelectChangeEvent) => {
-    if (event.target.value) {
-      setSelectedProject(event.target.value);
-    } else {
-      navigate("/create-project");
-    }
+    setSelectedProject(event.target.value);
   };
   return (
     <Paper
@@ -54,7 +48,6 @@ export const ProjectSelect = () => {
                   {p}
                 </MenuItem>
               ))}
-              <MenuItem>Create new project</MenuItem>
             </Select>
           </FormControl>
         </Grid>

@@ -19,17 +19,7 @@ interface ContractorLayoutProps {
 
 export const ContractorLayout = (props: ContractorLayoutProps) => {
   const { children, isOpen, handleDrawerOpen } = props;
-  const navigate = useNavigate();
-  const projects = ["Project 1", "Project 2", "Project 3", "Project 4"];
 
-  const [selectedProject, setSelectedProject] = useState(projects[0]);
-  const handleChange = (event: SelectChangeEvent) => {
-    if (event.target.value) {
-      setSelectedProject(event.target.value);
-    } else {
-      navigate("/create-project");
-    }
-  };
   return (
     <Box sx={{ display: "flex" }}>
       <SidebarMenu open={isOpen} handleDrawerOpen={handleDrawerOpen} />

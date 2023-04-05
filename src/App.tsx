@@ -73,25 +73,18 @@ const AuthenticatedRouter = () => {
 };
 
 function App() {
-  const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
   const handleDrawerOpen = () => {
     setIsOpen(!isOpen);
   };
 
-  const layout =
-    location.pathname.includes("/c/") || location.pathname.includes("/s/");
   return (
     <ErrorBoundary>
       <ThemeProvider theme={theme}>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <CssBaseline />
           <AuthProvider>
-            <AppLayout
-              authenticated={layout}
-              handleDrawerOpen={handleDrawerOpen}
-              isOpen={isOpen}
-            >
+            <AppLayout handleDrawerOpen={handleDrawerOpen} isOpen={isOpen}>
               <AuthenticatedRouter />
             </AppLayout>
           </AuthProvider>

@@ -1,5 +1,14 @@
-import { Box } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
+import Title from "../../atoms/Title/Title";
 
 export const Companies = () => {
-  return <Box mt={10}>Companies</Box>;
+  return (
+    <>
+      <Grid item xs={12}>
+        <Paper sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+          <Title>Companies</Title>
+        </Paper>
+      </Grid>
+    </>
+  );
 };

@@ -1,4 +1,3 @@
-import Container from "@mui/material/Container";
 import FormControl from "@mui/material/FormControl";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
@@ -12,13 +11,11 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { City, Country, State } from "country-state-city";
 import Box from "@mui/material/Box";
 
-interface CreateProjectFormProps {
+interface SiteOfficeFormProps {
   setActiveStep: (step: number) => void;
 }
 
-export const CreateProjectForm = ({
-  setActiveStep,
-}: CreateProjectFormProps) => {
+export const SiteOfficeForm = ({ setActiveStep }: SiteOfficeFormProps) => {
   const validationSchema = yup.object({
     projectName: yup.string().required("Project name is required"),
     projectAddress: yup.string().required("Project Address is required"),

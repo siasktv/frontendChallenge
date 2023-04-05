@@ -3,11 +3,15 @@ import { Box, Step, StepLabel, Stepper } from "@mui/material";
 interface CreateProjectStepsProps {
   activeStep: number;
 }
-const steps = ["Input Project Details", "Input Social Procurement"];
+const steps = [
+  "Project Details",
+  "Input Site Office Details",
+  "Social Procurement Details",
+];
 
 export const CreateProjectSteps = ({ activeStep }: CreateProjectStepsProps) => {
   return (
-    <Box sx={{ width: "100%" }} mt="10vh">
+    <Box sx={{ width: "100%" }}>
       <Stepper activeStep={activeStep} alternativeLabel>
         {steps.map((label) => (
           <Step key={label}>
