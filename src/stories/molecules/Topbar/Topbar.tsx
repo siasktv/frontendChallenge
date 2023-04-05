@@ -72,7 +72,7 @@ export const TopBar = ({ open, handleDrawerOpen }: TopBarProps) => {
   return (
     <AppBar position="fixed" open={open}>
       <Toolbar>
-        <Box m="auto" sx={{ flexGrow: 1 }}>
+        <Box sx={{}}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -85,13 +85,13 @@ export const TopBar = ({ open, handleDrawerOpen }: TopBarProps) => {
           >
             <MenuIcon />
           </IconButton>
-          <img
-            src="../logo.png"
-            height="50px"
-            alt="logo"
-            style={{ marginTop: "1vh" }}
-          />
         </Box>
+        <Box
+          component="img"
+          src={"../logo.png"}
+          alt="logo"
+          sx={{ display: { xs: "none", md: "flex", maxHeight: "5vh" }, mr: 1 }}
+        />
         <Box sx={{ flexGrow: 1 }}></Box>
         <Box>
           <Box sx={{ flexGrow: 0 }}>

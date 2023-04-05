@@ -4,7 +4,7 @@ import { CreateProjectSteps } from "../../molecules/CreateProjectSteps/CreatePro
 import { CreateSocialProcurementForm } from "../../molecules/CreateSocialProcurementForm/CreateSocialProcurementForm";
 
 export const CreateProject = () => {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
 
   const selectedCreateProjectStep = (() => {
     switch (activeStep) {
