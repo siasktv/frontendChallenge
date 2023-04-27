@@ -8,7 +8,6 @@ import CardHeader from "@mui/material/CardHeader";
 import Grid from "@mui/material/Grid";
 import StarIcon from "@mui/icons-material/StarBorder";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
 import Container from "@mui/material/Container";
 
 const tiers = [

@@ -11,15 +11,12 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme } from "@mui/material/styles";
-import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as yup from "yup";
 
 const theme = createTheme();
 
 export const Login = () => {
-  const navigate = useNavigate();
-
   const validationSchema = yup.object({
     email: yup.string().email().required("Email is required"),
   });
@@ -30,7 +27,6 @@ export const Login = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      navigate("/dashboard");
     },
   });
 

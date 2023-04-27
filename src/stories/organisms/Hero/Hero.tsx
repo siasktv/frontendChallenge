@@ -1,39 +1,69 @@
-import React from "react";
-import { Grid, Typography, Button, Box } from "@mui/material";
-import homeStyles from "../../../theme/homeStyles";
+import React from 'react'
+import { Box, Typography, styled } from '@mui/material'
+import homeStyles from '../../../theme/homeStyles'
+import { Container } from '@mui/system'
+import CustomButton from '../../atoms/CustomButton'
 
 const Hero = () => {
-  return (
-    <Box sx={homeStyles.heroBox}>
-      <Grid container spacing={6} sx={homeStyles.gridContainer}>
-        <Grid item xs={12} md={7}>
-          <Typography variant="h3" fontWeight={700} sx={homeStyles.title}>
-            Procurement that makes a difference
-          </Typography>
-          <Typography variant="h6" sx={homeStyles.subtitle}>
-            Welcome to Social Pro, your destination for socially responsible
-            procurement. We've created a platform that enables you to make
-            informed decisions about your procurement practices and prioritize
-            social values alongside traditional criteria. Whether you're looking
-            to support local businesses, promote ethical practices, or create
-            employment opportunities for underrepresented groups, Social Pro has
-            got you covered. Join us in building a more inclusive, sustainable,
-            and equitable world through procurement.
-          </Typography>
-          <Button
-            variant="contained"
-            color="primary"
-            sx={{ width: "200px", fontSize: "16px" }}
-          >
-            Contact Us
-          </Button>
-        </Grid>
-        <Grid item xs={12} md={5}>
-          <img src={"hero.png"} alt="My Team" style={homeStyles.largeImage} />
-        </Grid>
-      </Grid>
-    </Box>
-  );
-};
+  const Title = styled(Typography)(({ theme }) => ({
+    fontSize: '64px',
+    color: '#000336',
+    fontWeight: 'bold',
+    margin: theme.spacing(4, 0, 4, 0),
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '40px',
+    },
+  }))
 
-export default Hero;
+  return (
+    <Container>
+      <Box sx={homeStyles.heroBox}>
+        <Box sx={{ flex: '1', marginRight: '2rem' }}>
+          <Typography
+            variant="body2"
+            sx={{
+              fontSize: '18px',
+              color: '#687690',
+              fontWeight: '500',
+              mt: 10,
+              mb: 4,
+            }}
+          >
+            Welcome to SocialPro
+          </Typography>
+          <Title variant="h1">Procurement that makes a difference.</Title>
+          <Typography
+            variant="body2"
+            sx={{ fontSize: '18px', color: '#5A6473', my: 4 }}
+          >
+            A platform that enables you to make informed decisions about your
+            procurement practices and prioritize social values alongside
+            traditional criteria. Join us in building a more inclusive,
+            sustainable, and equitable world through procurement.
+          </Typography>
+          <CustomButton
+            backgroundColor="#017dc5"
+            color="#fff"
+            buttonText="Contact Us"
+            heroBtn={true}
+            guideBtn={undefined}
+            getStartedBtn={undefined}
+            onClick={undefined}
+          />
+        </Box>
+        <Box sx={{ flex: '1.25' }}>
+          <img
+            src={'hero2.svg'}
+            alt="heroImg"
+            style={{
+              maxWidth: '100%',
+              marginLeft: '2rem',
+            }}
+          />
+        </Box>
+      </Box>
+    </Container>
+  )
+}
+
+export default Hero

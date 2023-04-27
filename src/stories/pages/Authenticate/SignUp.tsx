@@ -13,12 +13,10 @@ import Container from "@mui/material/Container";
 import { createTheme } from "@mui/material/styles";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 export const SignUp = () => {
-  const navigate = useNavigate();
   const validationSchema = yup.object({
     email: yup.string().email().required("Email is required"),
   });
@@ -29,7 +27,6 @@ export const SignUp = () => {
     validationSchema: validationSchema,
     onSubmit: (values) => {
       alert(JSON.stringify(values, null, 2));
-      navigate("/dashboard");
     },
   });
 
